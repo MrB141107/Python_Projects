@@ -85,6 +85,8 @@ time.sleep(0.5)
 while(True):
     source=input("Enter source base : ")
     dest=input("Enter destination base : ")
+    source=source.lower()
+    dest=dest.lower()
     if(source=="decimal" and dest=="binary"):
         s=int(input("Enter a decimal number : "))
         print("Binary number is :",decimal_to_binary(s))
