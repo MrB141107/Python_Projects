@@ -1,5 +1,5 @@
 # `Python_Projects`
-➡️ ``A Collaborative Hub for Python Enthusiasts, one-stop destination for Python programs, games, projects, and more`` ⬅️
+#### ➡️ A Collaborative Hub for Python Enthusiasts, one-stop destination for Python programs, games, projects, and more ⬅️
 <h1 align=center> 🎃 Hacktoberfest 2023 🎃 </h1>
 
 ## <center> 🎊 `Hacktoberfest` welcomes everyone to represent their unique skills and interest towards the open sources community contribution... 🎊 </center>
