@@ -17,8 +17,8 @@
 
 ### `Contributors:` 
 
-<a href="https://github.com/MrB141107/Python_Projects/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=MrB141107/Python_Projects" />
+<a href="https://github.com/mrb141107/Python_Projects/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mrb141107/Python_Projects" />
 </a>
 
 ## All the best for the festival of hackers 👍🏻 👨🏻‍💻 🎃
