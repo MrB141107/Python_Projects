@@ -92,6 +92,7 @@ class Game:
         print()
         self.board = deepcopy(starting_board)
         self.verbalize = True
+        self.is_top_move = True
 
     def run(self, is_delay=True, is_print_board=True, calculate=True) -> None:
         '''Game loop with DELAY in seconds'''
@@ -109,7 +110,14 @@ class Game:
             if is_delay:
                 sleep(cfg.DELAY)
 
-            attacker, attacked, brd, opp_brd = self.next_cards()
+            try:
+                attacker, attacked, brd, opp_brd = self.next_cards()
+            except TypeError:
+                game_result = "It's a tie"
+                if self.verbalize:
+                    print('\n' + game_result + '!\n')
+                return game_result
+
             atkr_idx = brd.index(attacker)
             atkd_idx = opp_brd.index(attacked)
 
@@ -174,13 +182,30 @@ class Game:
         brd = self.board.top if self.is_top_move else self.board.bottom
         opp_brd = self.board.bottom if self.is_top_move else self.board.top
 
+        is_brd_cant_attack = all([card.attack <= 0 for card in brd])
+        is_opp_brd_cant_attack = all([card.attack <= 0 for card in brd])
+
+        if is_brd_cant_attack and not is_opp_brd_cant_attack:
+            self.is_top_move = not self.is_top_move
+            return self.next_cards()
+        elif is_brd_cant_attack and is_opp_brd_cant_attack:
+            return None
+
+        taunts = [i for i in range(len(opp_brd)) if opp_brd[i].is_taunt]
+
         # Selecting the first in order card that has not attacked yet
         # Then randomly selecting the attacked card
         for card in brd:
-            if not card.has_attacked:
+            if not card.has_attacked and card.attack > 0:
                 card.has_attacked = True
                 self.is_top_move = not self.is_top_move
-                return (card, random.choice(opp_brd), brd, opp_brd)
+
+                if not taunts:
+                    attacked_card = random.choice(opp_brd)
+                else:
+                    attacked_card = opp_brd[random.choice(taunts)]
+
+                return (card, attacked_card, brd, opp_brd)
 
         '''If all cards have attacked then set all card's properties
         'has_attacked' to false and try again to call this funciton'''
