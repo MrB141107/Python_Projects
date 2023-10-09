@@ -1,16 +1,20 @@
 from base_game import Game
 from base_board import Board
 from base_card import Card
+from hs_cards import get_cards
 
 if __name__ == '__main__':
-    card1 = {'attack': 1, 'health': 5, 'is_poison': True, 'is_reborn': True}
-    card2 = {'attack': 10, 'health': 20}
-    card3 = {'attack': 4, 'health': 4}
+    cards = get_cards()  # dict of classes
 
-    board_top = [Card(**card1), Card(**card3)]
-    board_bottom = [Card(**card2), Card(**card2)]
+    board_top = [cards['Annoy-o-Tron'](),
+                 cards['Dozy Whelp'](),
+                 cards['Micro Mummy']()]
 
-    board = Board(top=board_top, bottom=board_bottom)
+    board_btm = [cards['Annoy-o-Tron'](),
+                 cards['Dozy Whelp'](),
+                 cards['Micro Mummy']()]
+
+    board = Board(top=board_top, bottom=board_btm)
     game = Game(board=board)
     game.run()
 
