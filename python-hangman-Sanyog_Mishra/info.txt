@@ -1,0 +1,7 @@
+This code aims to imitate the game hangman.
+Executing main.py runs the game.
+
+Note: 1. The game gives hint by giving word lenth.
+      2. Life increases by one for every correct guess (even if it repeats in the words), provided lives are already not maximum (=6).
+      
+THANK YOU!!
