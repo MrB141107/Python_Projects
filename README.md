@@ -12,7 +12,7 @@
  
 ## 📢 Register yourself for the 10th Hacktoberfest challenge, make 4 quality contribution pull requests (PRs/MRs) between October 1st and 31st, and grab amazing rewards! ✨
 
-### Contributors must go through `CONTRIBUTING.md` and follow all the guidelines..
+### Contributors must go through `CONTRIBUTING.md` and follow all the guidelines...
 #### *All the languages are accepted here...
 
 ### `Contributors:` 
