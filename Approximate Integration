@@ -1,0 +1,94 @@
+import math
+from sympy.parsing.sympy_parser import (parse_expr)
+
+
+def is_even(x):
+  return x % 2 == 0
+
+
+def left_riemann_sum(a, b, f, n):
+  delta_x = (b - a) / n
+  sum = 0
+
+  for i in range(n):
+    x_i = a + i * delta_x
+    sum += delta_x * f(x_i)
+
+  return sum
+
+
+def right_riemann_sum(a, b, f, n):
+  delta_x = (b - a) / n
+  sum = 0
+
+  for i in range(1, n + 1):
+    x_i = a + i * delta_x
+    sum += delta_x * f(x_i)
+
+  return sum
+
+
+def midpoint_rule(a, b, f, n):
+  delta_x = (b - a) / n
+  sum = 0
+
+  for i in range(0, n):
+    x_i = a + i * delta_x + delta_x / 2
+    sum += delta_x * f(x_i)
+
+  return sum
+
+
+def trapezoidal_approximate_integral(a, b, f, n):
+  delta_x = (b - a) / n
+
+  sum = f(a)
+
+  for i in range(1, n):
+    x_i = a + i * delta_x
+    sum += 2 * f(x_i)
+
+  sum += f(b)
+
+  approx_area = sum * (delta_x / 2)
+
+  return approx_area
+
+
+def simpsons_rule_approximate_integral(a, b, f, n):
+  delta_x = (b - a) / n
+
+  sum = f(a)
+
+  for i in range(1, n):
+    x_i = a + i * delta_x
+    coefficient = 2 if is_even(i) else 4
+    sum += coefficient * f(x_i)
+
+  sum += f(b)
+
+  approx_area = sum * (delta_x / 3)
+
+  return approx_area
+
+
+def string_to_function(expression):
+
+  def function(x):
+    return eval(expression)
+
+  return function
+
+
+while True:
+  print("\nCompute Approximate integral:")
+  a = float(eval(input("Area from (a): ")))
+  b = float(eval(input("To (b): ")))
+  f = string_to_function(input("Of Function: "))
+  n = int(input("# of Subintervals (n): "))
+
+  print(f"\nLeft Riemann Sum: {left_riemann_sum(a, b, f, n)}")
+  print(f"Right Riemann Sum: {right_riemann_sum(a, b, f, n)}")
+  print(f"Midpoint Rule: {midpoint_rule(a, b, f, n)}")
+  print(f"\nTrapezoidal: {trapezoidal_approximate_integral(a, b, f, n)}")
+  print(f"Simpson's Rule: {simpsons_rule_approximate_integral(a, b, f, n)}")
