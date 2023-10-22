@@ -1,4 +1,4 @@
-GAME_ICON_FILENAME = "game logo image path"
+GAME_ICON_FILENAME = 'snake_game/images/game_logo.jpg'
 GAME_TITLE = "Snake Voyage"
 APPLE_WIDTH = 20
 APPLE_HEIGHT = 20

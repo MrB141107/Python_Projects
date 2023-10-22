@@ -2,6 +2,7 @@
 Author: Ninja-06
 Date: 22-10-2023
 Description: This is simple snake game which is build using pygame module.
+Run this file from Python projects directory
 """
 
 import random
