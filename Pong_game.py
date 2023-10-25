@@ -1,11 +1,11 @@
 from turtle import Turtle , Screen
 from time import sleep
-from winsound import Beep
+# from winsound import Beep
 initial_angle=37
 y_wall=290
 X=360          #initial position of paddles horizontal
 Y=0
-ball_speed=8
+ball_speed=9
 
 #ball class to create a ball object
 class Ball(Turtle):
@@ -87,24 +87,24 @@ class Game:
     def wall_collision(self):
         if self.ball.ycor() >= 280 or self.ball.ycor() <= -280:
             self.ball_bounce()
-            Beep(300,60)
+            # Beep(300,60)
 
     
     def ball_collision(self):
         
         if self.ball.distance(self.paddles[0]) < 50 and self.ball.xcor()>340 or self.ball.distance(self.paddles[1]) < 50 and self.ball.xcor() < -340:
             self.ball_bounce2()
-            Beep(600,60)
+            # Beep(600,60)
     
     def new_ball(self):
         
         if self.ball.xcor() >= 400 :
-            Beep(600,100)
+            # Beep(600,100)
             self.Lscr+=1
             self.ball.goto(0,0)
             self.ball_bounce2()
         elif self.ball.xcor() <=-400:
-            Beep(600,100)
+            # Beep(600,100)
             self.Rscr+=1
             self.ball_bounce2()
             self.ball.goto(0,0)
@@ -114,8 +114,8 @@ class Game:
     
     def ball_bounce2(self):
         self.x_up*=-1
-        if self.ball.ballspeed<9.6:
-            self.ball.ballspeed+=0.3
+        # if self.ball.ballspeed<9.6:
+        #     self.ball.ballspeed+=0.3
 
     def divider(self):
         pen=Turtle()
@@ -133,22 +133,22 @@ class Game:
     
     def move_paddle(self):
         def up():
-            new_y=self.paddles[0].ycor()+20
+            new_y=self.paddles[0].ycor()+30
             self.paddles[0].goto(X,new_y)
             self.screen.update()
 
         def down():
-            new_y=self.paddles[0].ycor()-20
+            new_y=self.paddles[0].ycor()-30
             self.paddles[0].goto(X,new_y)
             self.screen.update()
 
         def up_l():
-            new_y=self.paddles[1].ycor()+20
+            new_y=self.paddles[1].ycor()+30
             self.paddles[1].goto(-X-10,new_y)
             self.screen.update()
 
         def down_l():
-            new_y=self.paddles[1].ycor()-20
+            new_y=self.paddles[1].ycor()-30
             self.paddles[1].goto(-X-10,new_y)
             self.screen.update()
 
