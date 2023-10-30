@@ -34,3 +34,7 @@ def mergeSort(array):
             array[k] = M[j]
             j += 1
             k += 1
+            
+arr = list(map(int,input("Enter the arr : ").split()))
+mergeSort(arr)
+print(ar)
